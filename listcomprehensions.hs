@@ -47,3 +47,27 @@ boomBangs xs = [ if x < 10 then "BANG!" else "BOOM!" | x <- xs, odd x ]
 
 -- 3) Get all numbers from 10 to 20 that are not 13, 15 or 19.
 ex03 = [ x | x <- [10..20], x /= 13, x /= 15, x /= 19]
+
+-- 4) Get the products of all the possible combinations
+-- between numbers in 2 lists.
+ex04 = [ x * y | x <- [2,5,10], y <- [8,10,11]]
+
+-- 5) Combine a list of adjectives and a list of nouns
+nouns = [ "zarigüella", "pergenio", "uzumakinarutó" ]
+adjectives = ["vagoneta", "mentecato", "chinqui güenco"]
+combinedLists = [ noun ++ " " ++ adjective | noun <- nouns, adjective <- adjectives ]
+
+-- 6) Custom Length
+-- _ --> we do not care about the value in the input list.
+length' xs = sum [ 1 | _ <- xs ]
+
+-- 7) Remove non uppercase
+removeNonUppercase xs = [ x | x <- xs, x `elem` ['A'..'Z']]
+
+-- 8) Remove all odd numbers without flattening the list
+xxs = [
+    [1,3,5,2,3,1,2,4,5],
+    [1,2,3,4,5,6,7,8,9],
+    [1,2,4,2,1,6,3,1,3,2,3,6]
+  ]
+removeOddNumbers xxs = [[ x | x <- xs, even x ] | xs <- xxs ]
