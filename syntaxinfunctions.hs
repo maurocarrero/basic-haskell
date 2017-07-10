@@ -23,3 +23,30 @@ charName 'c' = "Virginia"
 
 -- charName 'f'
 -- ---> ERROR: Non-exhaustive patterns in function charName
+
+-- Patter matching can also be used on tuples
+-- Takes two vectors in a 2D space (that are in the form of pairs)
+-- and adds them together.
+addVectors :: (Num a) => (a, a) -> (a, a) -> (a, a)
+addVectors a b = (fst a + fst b, snd a + snd b)
+
+-- Improving the latter with pattern matching
+addVectors' :: (Num a) => (a, a) -> (a, a) -> (a, a)
+addVectors' (x1, y1) (x2, y2) = (x1 + x2, y1 + y2)
+
+-- Make our fst and snd (and trd) for triples
+first :: (a, b, c) -> a
+first (a, _, _) = a
+
+second :: (a, b, c) -> b
+second (_, b, _) = b
+
+third :: (a, b, c) -> c
+third (_, _, c) = c
+
+main = do
+  putStrLn "Peteco was here"
+  putStrLn (show "addVectors: " ++ show (addVectors (1, 2) (3, 4)))
+  putStrLn (show "First (1, 2, 3): " ++ show (first (1, 2, 3)))
+  putStrLn (show "Second (1, 2, 3): " ++ show (second (1, 2, 3)))
+  putStrLn (show "Third (1, 2, 3): " ++ show (third (1, 2, 3)))
